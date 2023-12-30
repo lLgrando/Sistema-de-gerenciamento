@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+    <%- include('module_panel.ejs') %>
+
+        <div class="table_div">
+            <table>
+                <tr class="cabecalho">
+                    <th>Nome</th>
+                    <th>Serviço</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                </tr>
+                <% for(let item of data) { %>
+                    <tr>
+                        <td><%= item.cliente %></td>
+                        <td><%= item.servico %></td>
+                        <td><%= formatDate(item.data) %></td>
+                        <td><%= formatHours(item.horario) %></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <%- include('module_panel.ejs') %>
+
+
+        <div class="div_form">
+            <form action="/admin" method="post">
+                <fieldset>
+                    <legend>Dados pessoais</legend>
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome">
+                    <label for="data_nascimento">Data de nascimento</label>
+                    <input type="text" id="data_nascimento" name="data_nascimento">
+                    <label for="sexo">Masculino</label>
+                    <input type="radio" name="sexo" value="masculino">
+                    <label for="sexo">Feminino</label>
+                    <input type="radio" name="sexo" value="feminino">
+                </fieldset>
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <label for="">Endereço</label>
+                    <input type="text">
+                    <label for="">Número</label>
+                    <input type="text">
+                    <label for="">Complemento</label>
+                    <input type="text">
+                    <label for="">Bairro</label>
+                    <input type="text">
+                </fieldset>
+                <fieldset>
+                    <legend>Contato</legend>
+                    <label for="">Celular/Telefone 1</label>
+                    <input type="text">
+                    <label for="">Celular/Telefone 2</label>
+                    <input type="text">
+                    <label for="">Email</label>
+                    <input type="text">
+                </fieldset>
+                <input type="submit" value="Cadastrar">
+            </form>
+        </div>
+
+</body>
+
+</html>

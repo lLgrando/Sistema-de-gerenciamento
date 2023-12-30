@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+  <%- include('module_panel.ejs') %>
+
+      <div class="form_select_date">
+        <form action="/admin/calendario" method="post">
+          <input type="date" id="intial_date" name="initial_date">
+          <input type="date" id="final_date" name="final_date">
+          <input type="submit" value="Localizar">
+        </form>
+      </div>
+
+      <div class="box_agendamentos">
+        <% for (let i = 0; i < Math.max(data.datas.length, 7); i++) { %>
+          <div class="box_data">
+            <div class="dateFromBox">
+              <p><%= formatDate(data.datas[i]) %></p>
+            </div>
+            
+            <% for(let j = 0; j < data.row.length; j++) { %>
+              <% if (data.datas[i].getTime() === data.row[j].data.getTime()) { %>
+                <div class="listagem">
+                  <div class="cliente">
+                    <p><%= data.row[j].cliente %></p>
+                  </div>
+                  <div class="horario">
+                    <p><%= formatHours(data.row[j].horario) %></p>
+                  </div>
+                </div>
+              <% } %> 
+            <% } %>
+            
+          </div>
+
+        <% } %>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+
+</html>

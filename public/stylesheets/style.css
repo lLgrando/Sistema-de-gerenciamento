@@ -1,0 +1,380 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+/* LAYOUT PADRÃO */
+
+
+.div_painel {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 40px minmax(100vh, auto);
+    grid-template-areas:
+        "header header"
+        "painel main";
+}
+
+.header {
+    grid-area: header;
+    background-color: black;
+    color: white;
+    position: fixed;
+    width: 100%;
+    height: 40px;
+}
+
+.painel {
+    grid-area: painel;
+    position: fixed;
+    top: 40px;
+    height: 100%;
+    width: 200px;
+    background-color: rgba(147, 147, 201, 0.781);
+}
+
+.painel ul div li {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    grid-area: main;
+}
+
+/* HEADER */
+
+
+.header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 80px;
+}
+
+.header ul li a {
+    color: white;
+}
+
+
+/* MENU LATERAL */
+
+
+.painel ul li {
+    padding: 20px 0px 0px 8px;
+    font-size: 20px;
+}
+
+.painel ul li a {
+    padding: 2px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.painel ul li a:hover {
+    color: rgb(233, 196, 152);
+}
+
+
+/* PÁGINA DASHBOARD */
+/* formulário de seleção de datas */
+
+.form_select_date {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.form_select_date form input {
+    width: 160px;
+    height: 30px;
+    padding-left: 10px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form_select_date form input:hover {
+    border: 1px solid green;
+}
+
+.form_select_date form input[type="submit"] {
+    width: 140px;
+    height: 30px;
+    padding-left: 0px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form_select_date form input[type="submit"]:hover {
+    background-color: rgb(90, 194, 194);
+    border: 1px solid gray;
+}
+
+/* calendário */
+
+.box_agendamentos {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: minmax(200px, auto);
+    grid-auto-flow: dense;
+    gap: 4px;
+}
+
+.box_data {
+    height: 200px;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 6px;
+}
+
+.dateFromBox {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.listagem {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 24px;
+    justify-content: space-around;
+    margin-top: 4px;
+}
+
+.cliente {
+    margin-left: 2px;
+}
+
+.horario {
+    margin-right: 2px;
+}
+
+
+/* PÁGINA HISTÓRICO */
+
+
+.table_div {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin-top: 40px;
+    border-collapse:collapse;
+    width: 90%;
+    border: 2px solid gray;
+}
+
+table tr th {
+    border: 1px solid rgb(224, 224, 224);
+    border-bottom: 2px solid gray;
+    padding: 4px 0;
+    background-color: rgb(255, 250, 243);
+}
+
+table tr td {
+    border: 1px solid rgb(224, 224, 224);
+    padding: 6px 2px;
+}
+
+
+/* PÁGINA AGENDAMENTO */
+
+
+.form_div {
+    display: flex;
+    justify-content: center;
+}
+
+.form_div form {
+    margin-top: 40px;
+    padding: 40px 20px;
+    border: 1px solid gray;
+    border-radius: 18px;
+}
+
+.form_div form section {
+    display: flex;
+    flex-direction: row;
+}
+
+.form_div form section div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.form_div form section label {
+    padding-left: 6px;
+}
+
+.form_div form section input {
+    height: 30px;
+    margin: 0 4px;
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 8px;
+    padding-left: 6px;
+}
+
+.form_div form section input[name="cliente"] {
+    width: 300px;
+}
+
+.form_div form section input[name="servico"] {
+    width: calc(500px - 14px);
+}
+
+.form_div form section input[name="observacoes"] {
+    width: calc(500px - 14px);
+}
+
+.form_button {
+    display: flex;
+    justify-content: center;
+}
+
+.form_button input[type='submit'] {
+    width: 200px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.form_button input[type='submit']:hover {
+    background-color: gray;
+}
+
+
+/* PÁGINA DASHBOARD */
+/* menu de informações */
+
+.div_dashboard_infos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+}
+
+.div_dashboard_infos .card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 160px;
+    margin: 0 40px;
+    border: 1px solid gray;
+}
+
+.div_dashboard_infos .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 20px;
+    background-color: aquamarine;
+}
+
+.div_dashboard_infos .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 50px;
+    background-color: cadetblue;
+}
+
+/* menu de finanças */
+
+.div_dashboard_financas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+}
+
+.div_dashboard_financas .card {
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    height: 160px;
+    margin: 0 40px;
+    border: 1px solid gray;
+}
+
+.div_dashboard_financas .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 20px;
+    background-color: aquamarine;
+}
+
+.div_dashboard_financas .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 50px;
+    background-color: cadetblue;
+}
+
+
+/* PÁGINA DE CADASTRO DE SERVIÇOS (servicos.ejs) */
+
+.comandos_superior {
+    display: flex;
+    flex-direction: row;
+}
+
+.comandos_superior button {
+    margin: 8px 0 0 8px;
+    width: 60px;
+}
+
+.div_form {
+    display: none;
+    justify-content: center;
+    border-bottom: 4px solid rgb(199, 199, 199);
+}
+
+.div_form form {
+    margin: 20px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.div_form form section {
+    display: flex;
+    flex-direction: row;
+}
+
+.div_form form section div {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4px;
+}
+
+.div_form form section div input {
+    height: 40px;
+    margin-bottom: 20px;
+    padding-left: 4px;
+    font-size: 18px;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
+textarea {
+    width: 700px;
+    height: 60px;
+    padding: 2px;
+    font-size: 18px;
+}

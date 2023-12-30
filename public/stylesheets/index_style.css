@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+.nav_superior div a img {
+    width: 50px;
+    border-radius: 6px;
+}
+
+/* MENU SUPERIOR */
+
+.nav_superior {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 80px;
+    background-color: antiquewhite;
+}
+
+.div_superior ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    font-size: 20px;
+}
+
+/* BANNER PRINCIPAL */
+
+.banner_superior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 80px;
+    background-color: rgb(201, 171, 228);
+}
+
+.texto_banner_superior {
+    margin-top: 20px;
+}
+
+.texto_banner_superior h1 {
+    font-size: 48px;
+}
+
+.texto_banner_superior a {
+    font-size: 22px;
+}
+
+.itens_texto_banner_superior {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_image_banner_superior {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itens_texto_banner_superior {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin: 40px 0;
+    font-size: 32px;
+}
+
+.itens_texto_banner_superior span {
+    margin: 20px 0;
+}
+
+.div_image_banner_superior img {
+    width: 500px;
+    border-radius: 20px;
+}
+
+
+/* PÁGINA DE LOGIN e PÁGINA DE SIGNUP*/
+
+
+.div_principal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.div_esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: justify;
+    height: 100%;
+    background-color: rgba(224, 190, 255, 0.562);
+    color: rgb(131, 131, 131);
+}
+
+.div_esquerda ul {
+    width: 50%;
+}
+
+.div_esquerda span {
+    text-decoration:underline;
+    color: rgb(77, 77, 77);
+    margin-top: 20px;
+}
+
+.div_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgba(184, 152, 216, 0.562);
+}
+
+.div_form h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.div_form form {
+    border: 1px solid green;
+    padding: 60px 40px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(246, 236, 255, 0.562);
+}
+
+.div_form form section {
+    display: flex;
+    flex-direction: column;
+}
+
+.div_form form section label {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.div_form form section input {
+    height: 40px;
+    width: 300px;
+    margin-bottom: 30px;
+    padding-left: 8px;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+.div_form form section input:hover {
+    border: 2px solid rgba(155, 120, 190, 0.562);
+}
+
+.div_form form section button[type='submit'] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 26px;
+    margin-top: 20px;
+    background-color: rgba(184, 152, 216, 0.562);
+}
+
+.div_form form section button[type='submit']:hover {
+    background-color: rgba(246, 236, 255, 0.562);
+}
+
+.div_form .signup {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+
+/* PÁGINA DE CRIAÇÃO DE CONTA */
