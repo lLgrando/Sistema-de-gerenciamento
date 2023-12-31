@@ -104,4 +104,14 @@ function getPorData(initial_date, final_date) {
 }
 
 
-module.exports = { getAgendamentos, insertAgendamento, getPorData }
+function getAgendamentosPorData() {
+    const db_query = 'SELECT data FROM agendamento';
+
+    return new Promise((resolve, reject) => {
+        connection.query(db_query, (err, result) => {
+            resolve({ result });
+        })
+    })
+}
+
+module.exports = { getAgendamentos, insertAgendamento, getPorData, getAgendamentosPorData }

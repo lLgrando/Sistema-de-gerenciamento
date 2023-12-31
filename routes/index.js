@@ -59,8 +59,8 @@ function formatHours(dataFromBd) {
 function middlewareValidationSignup(req, res, next) {
     String(req.body.password);
     const { error } = schema_signup.validate(req.body);
-    if(error) {
-        return res.status(422).json({error: error.details});
+    if (error) {
+        return res.status(422).json({ error: error.details });
     } else {
         next();
     }
@@ -105,32 +105,38 @@ router.post('/signup', middlewareValidationSignup, (req, res, next) => {
 /* ADMIN PANEL */
 
 router.get('/admin', isAuthenticated, async (req, res, next) => {
-    let data = await db_agendamento.getPorData();
-    res.render('admin_panel/dashboard');
+    let { result } = await db_agendamento.getAgendamentosPorData();
+    let espec = [];
+    for (let mes = 1; mes <= 12; mes++) {
+        let count = 0;
+        result.forEach(element => {
+            if ((element.data.getMonth() + 1) === mes) {
+                count++;
+            }
+        });
+        espec.push({mes: mes, qtd: count});
+    }
+    res.render('admin_panel/dashboard', {espec: espec});
 });
 
-router.get('/admin/dashboard', isAuthenticated, async (req, res, next) => {
-    let data = await db_agendamento.getPorData();
-    res.render('admin_panel/dashboard');
-});
 
 router.get('/admin/calendario', isAuthenticated, async (req, res, next) => {
     let data = await db_agendamento.getPorData();
-    console.log(data.row[0].data + " " + typeof(data.row[0].data));
-    console.log(data.datas[0] + " " + typeof(data.datas[0]));
-    res.render('admin_panel/calendario', {data: data, formatDate: formatDate, formatHours: formatHours });
+    console.log(data.row[0].data + " " + typeof (data.row[0].data));
+    console.log(data.datas[0] + " " + typeof (data.datas[0]));
+    res.render('admin_panel/calendario', { data: data, formatDate: formatDate, formatHours: formatHours });
 })
 
 router.post('/admin/calendario', isAuthenticated, async (req, res, next) => {
     let data = await db_agendamento.getPorData(req.body.initial_date, req.body.final_date);
-    res.render('admin_panel/calendario', {data: data, formatDate: formatDate, formatHours: formatHours });
+    res.render('admin_panel/calendario', { data: data, formatDate: formatDate, formatHours: formatHours });
 })
 
 router.get('/admin/cadastrar', isAuthenticated, (req, res, next) => {
     res.render('admin_panel/admin_cadastrar_cliente');
 })
 
-router.get('/admin/agendamento', isAuthenticated, async (req, res, next) => {    
+router.get('/admin/agendamento', isAuthenticated, async (req, res, next) => {
     let data = await db_agendamento.getAgendamentos();
     res.render('admin_panel/novo_servico', { data: data });
 })
