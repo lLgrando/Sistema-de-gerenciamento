@@ -106,6 +106,7 @@ router.post('/signup', middlewareValidationSignup, (req, res, next) => {
 
 router.get('/admin', isAuthenticated, async (req, res, next) => {
     let { result } = await db_agendamento.getAgendamentosPorData();
+    await db_agendamento.getTotalCliente();
     let espec = [];
     for (let mes = 1; mes <= 12; mes++) {
         let count = 0;

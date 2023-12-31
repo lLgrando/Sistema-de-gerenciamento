@@ -1,3 +1,5 @@
+@import url('./colors.css');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -34,7 +36,7 @@
     top: 40px;
     height: 100%;
     width: 200px;
-    background-color: rgba(147, 147, 201, 0.781);
+    background-color: var(--cor-destaque);
 }
 
 .painel ul div li {
@@ -75,11 +77,12 @@
 .painel ul li a {
     padding: 2px;
     font-size: 20px;
-    color: #fff;
+    color: black;
+    border-bottom: 1px solid var(--cor-destaque);
 }
 
 .painel ul li a:hover {
-    color: rgb(233, 196, 152);
+    border-bottom: 1px solid var(--cor-borders);
 }
 
 
@@ -126,12 +129,14 @@
     grid-template-rows: minmax(200px, auto);
     grid-auto-flow: dense;
     gap: 4px;
+    margin: 0px 8px 0px 8px;
 }
 
 .box_data {
     height: 200px;
     border: 1px solid rgb(226, 226, 226);
     border-radius: 6px;
+    background-color: var(--cor-cards);
 }
 
 .dateFromBox {

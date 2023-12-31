@@ -114,4 +114,15 @@ function getAgendamentosPorData() {
     })
 }
 
-module.exports = { getAgendamentos, insertAgendamento, getPorData, getAgendamentosPorData }
+function getTotalCliente() {
+    const db_query = 'SELECT COUNT(username) FROM users';
+
+    return new Promise((resolve, reject) => {
+        connection.query(db_query, (err, result) => {
+            console.log(result);
+            resolve(result);
+        })
+    }) 
+}
+
+module.exports = { getAgendamentos, insertAgendamento, getPorData, getAgendamentosPorData, getTotalCliente }
