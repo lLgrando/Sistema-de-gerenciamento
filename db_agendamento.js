@@ -42,7 +42,7 @@ function compareDates(data1, data2) {
     let date1 = new Date(getData(data1));
     let date2 = new Date(getDataPlusDays(difNumber, date1));
 
-    while(difNumber > 0) {
+    while (difNumber > 0) {
         dates.push(date2)
         difNumber--;
         date2 = new Date(getDataPlusDays(difNumber, date1));
@@ -90,15 +90,14 @@ function insertAgendamento(data) {
 function getPorData(initial_date, final_date) {
     let data1 = initial_date || getData(new Date()).replace(/\//g, '-');          // 1969-12-31 
     let data2 = final_date || getDataPlusDays().replace(/\//g, '-');    // 1970-01-07
-  
+
     let datas = compareDates(data1, data2);
 
     let db_query = "SELECT cliente, data, horario FROM agendamento WHERE data BETWEEN ? AND ? ORDER BY data";
 
     return new Promise((resolve, reject) => {
         connection.query(db_query, [data1, data2], (err, row) => {
-            console.log(row);
-            resolve({row, datas});
+            resolve({ row, datas });
         });
     })
 }
@@ -119,10 +118,50 @@ function getTotalCliente() {
 
     return new Promise((resolve, reject) => {
         connection.query(db_query, (err, result) => {
-            console.log(result);
             resolve(result);
         })
-    }) 
+    })
 }
 
-module.exports = { getAgendamentos, insertAgendamento, getPorData, getAgendamentosPorData, getTotalCliente }
+function getAllServicos() {
+    const db_query = 'SELECT * FROM servicos;'
+
+    return new Promise((resolve, reject) => {
+        connection.query(db_query, (err, result) => {
+            resolve(result);
+        });
+    })
+}
+
+function createServico(data_body) {
+    const db_query = 'INSERT INTO servicos (codigo_sku, ncm, servico, preco, preco_custo, funcionario, disponibilidade, categoria, descricao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);';
+
+    let values = [
+        data_body.codigo_sku, 
+        data_body.ncm, 
+        data_body.servico, 
+        data_body.preco, 
+        data_body.preco_custo, 
+        data_body.funcionario, 
+        data_body.disponibilidade, 
+        data_body.categoria, 
+        data_body.descricao
+    ];
+
+    return new Promise((resolve, reject) => {
+        connection.query(db_query, values, (err, result) => {
+            resolve(result);
+        })
+    })
+}
+
+
+module.exports = { 
+    getAgendamentos, 
+    insertAgendamento, 
+    getPorData, 
+    getAgendamentosPorData, 
+    getTotalCliente,
+    createServico,
+    getAllServicos,
+ }

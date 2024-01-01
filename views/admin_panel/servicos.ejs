@@ -20,50 +20,50 @@
             <form action="" method="post">
                 <section class="section1">
                     <div>
-                        <label for="">Código (SKU)</label>
-                        <input type="text">
+                        <label for="codigo_sku">Código (SKU)</label>
+                        <input type="text" id="codigo_sku" name="codigo_sku">
                     </div>
                     <div>
-                        <label for="">NCM</label>
-                        <input type="text">
+                        <label for="ncm">NCM</label>
+                        <input type="text" id="ncm" name="ncm">
                     </div>
                     <div>
-                        <label for="">Serviço</label>
-                        <input type="text" name="servico">
-                    </div>
-                </section>
-                <section>
-                    <div>
-                        <label for="">Preço</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label for="">Preço de custo</label>
-                        <input type="text">
+                        <label for="servico">Serviço</label>
+                        <input type="text" id="servico" name="servico">
                     </div>
                 </section>
                 <section>
                     <div>
-                        <label for="">Funcionário</label>
-                        <input type="text">
+                        <label for="preco">Preço</label>
+                        <input type="text" id="preco" name="preco">
                     </div>
                     <div>
-                        <label for="">Disponibilidade do Produto</label>
+                        <label for="preco_custo">Preço de custo</label>
+                        <input type="text" id="preco_custo" name="preco_custo">
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <label for="funcionario">Funcionário</label>
+                        <input type="text" id="funcionario" name="funcionario">
+                    </div>
+                    <div>
+                        <label for="disponibilidade">Disponibilidade do Produto</label>
                         <input list="disponibilidade" name="disponibilidade" value="Disponível">
                             <datalist id="disponibilidade">
-                                <option value="Disponível">
-                                <option value="Indisponível">
+                                <option value="Disponível" id="disponivel" name="disponivel" value="disponivel">
+                                <option value="Indisponível" id="indisponivel" name="indisponivel" value="indisponivel">
                             </datalist>
                     </div>
                     <div>
-                        <label for="">Categoria</label>
-                        <input type="text">
+                        <label for="categoria">Categoria</label>
+                        <input type="text" id="categoria" name="categoria">
                     </div>
                 </section>
                 <section>
                     <div>
-                        <label for="">Descrição (opcional)</label>
-                        <textarea name="descricao" id=""  rows="2"></textarea>
+                        <label for="descricao">Descrição (opcional)</label>
+                        <textarea name="descricao" id="descricao" name="descricao" rows="2"></textarea>
                     </div>
                 </section>
                 <section>
@@ -81,15 +81,22 @@
             <th>Preco Custo</th>
             <th>Funcionário</th>
             <th>Disponibilidade</th>
+            <th>Ações</th>
         </tr>
-        <tr>
-            <td>46582456</td>
-            <td>Corte cabelo feminio</td>
-            <td>120</td>
-            <td>60</td>
-            <td>Alex</td>
-            <td>Disponível</td>
-        </tr>
+        <% for(let item of data) { %>
+            <tr>
+                <td> <%= item.ncm %> </td>
+                <td> <%= item.servico %> </td>
+                <td> R$ <%= item.preco %> </td>
+                <td> R$ <%= item.preco_custo %> </td>
+                <td> <%= item.funcionario %> </td>
+                <td> <%= item.disponibilidade %> </td>
+                <td>
+                    <a href="">Editar</a>
+                    <a href="">Excluir</a>
+                </td>
+            </tr>
+        <% } %>
     </table>
         
     <script>

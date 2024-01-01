@@ -111,7 +111,7 @@ router.get('/admin', isAuthenticated, async (req, res, next) => {
     for (let mes = 1; mes <= 12; mes++) {
         let count = 0;
         result.forEach(element => {
-            if ((element.data.getMonth() + 1) === mes) {
+            if ((element.data.getMonth() + 1) === mes && element.data.getFullYear() == new Date().getFullYear()) {
                 count++;
             }
         });
@@ -152,10 +152,22 @@ router.post('/admin/agendamento', isAuthenticated, (req, res, next) => {
 router.get('/admin/historico', isAuthenticated, async (req, res, next) => {
     let data = await db_agendamento.getAgendamentos();
     res.render('admin_panel/historico', { data: data, formatDate: formatDate, formatHours: formatHours });
-})
+});
 
-router.get('/admin/servicos', isAuthenticated, (req, res, next) => {
-    res.render('admin_panel/servicos');
-})
+router.get('/admin/servicos', isAuthenticated, async (req, res, next) => {
+    let data = await db_agendamento.getAllServicos();
+    console.log(data);
+    res.render('admin_panel/servicos', {data: data});
+});
+
+router.post('/admin/servicos', isAuthenticated, async (req, res, next) => {
+    let data = await db_agendamento.createServico(req.body);
+
+    console.log(data);
+
+    res.redirect('/admin/servicos');
+
+});
+
 
 module.exports = router;
