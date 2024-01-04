@@ -46,7 +46,7 @@ passport.deserializeUser(function (user, cb) {
 function formatDate(dataFromBd) {
     let data = new Date(dataFromBd);
     let day = String(data.getDate()).padStart(2, "0");
-    let month = data.getMonth() + 1;
+    let month = String(data.getMonth() + 1).padStart(2, "0");
     let year = data.getFullYear();
     return `${day}/${month}/${year}`;
 }
@@ -105,6 +105,8 @@ router.post('/signup', middlewareValidationSignup, (req, res, next) => {
 /* ADMIN PANEL */
 
 router.get('/admin', isAuthenticated, async (req, res, next) => {
+    let agendamentosDoDia = await db_agendamento.getAgendamentos();
+
     let { result } = await db_agendamento.getAgendamentosPorData();
     await db_agendamento.getTotalCliente();
     let espec = [];
@@ -117,7 +119,7 @@ router.get('/admin', isAuthenticated, async (req, res, next) => {
         });
         espec.push({mes: mes, qtd: count});
     }
-    res.render('admin_panel/dashboard', {espec: espec});
+    res.render('admin_panel/dashboard', {espec: espec, agendamentosDoDia: agendamentosDoDia, formatDate: formatDate, formatHours: formatHours});
 });
 
 

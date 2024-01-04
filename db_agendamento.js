@@ -54,6 +54,7 @@ function compareDates(data1, data2) {
 
 /*  -----  QUERYS  -----  */
 
+/* agendamentos */
 
 function getAgendamentos() {
     return new Promise((resolve, reject) => {
@@ -113,6 +114,20 @@ function getAgendamentosPorData() {
     })
 }
 
+function getAgendamentos() {
+    let day = getData(new Date());
+
+    const db_query = 'SELECT * FROM agendamento WHERE data = ? ORDER BY horario;';
+
+    return new Promise((resolve, reject) => {
+        connection.query(db_query, day, (err, row) => {
+            resolve(row);
+        })
+    })
+}
+
+/* clientes */
+
 function getTotalCliente() {
     const db_query = 'SELECT COUNT(username) FROM users';
 
@@ -122,6 +137,8 @@ function getTotalCliente() {
         })
     })
 }
+
+/* serviços */
 
 function getAllServicos() {
     const db_query = 'SELECT * FROM servicos;'
@@ -164,4 +181,5 @@ module.exports = {
     getTotalCliente,
     createServico,
     getAllServicos,
+    getAgendamentos,
  }
