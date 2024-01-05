@@ -6,9 +6,11 @@ var logger = require('morgan');
 var passport = require('passport');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
+var utils = require('./public/javascripts/utils');
 require('dotenv').config();
 
-var indexRouter = require('./routes/index');
+
+var indexRouter = require('./routes/router');
 
 var app = express();
 
@@ -19,6 +21,12 @@ const options = {
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD
 };
+
+app.use((req, res, next) => {
+  res.locals.formatDate = utils.formatDate;
+  res.locals.formatHours = utils.formatHours;
+  next();
+});
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
